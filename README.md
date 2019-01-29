@@ -30,3 +30,4 @@ columnIntValue, columnStringValue - Returns a data field from the results of a S
 # Reference:
 
 http://www.yolinux.com/TUTORIALS/SQLite.html
+https://github.com/DrKLO/Telegram
