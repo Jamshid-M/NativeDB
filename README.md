@@ -6,6 +6,8 @@ opendb - Opens specified database file.
 sqlite3_open() 
 
 
+
+
 closedb - Closes a previously opened database file. 
 
 sqlite3_close()
