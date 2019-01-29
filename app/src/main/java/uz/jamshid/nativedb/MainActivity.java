@@ -14,6 +14,7 @@ public class MainActivity extends AppCompatActivity {
     SQLiteDatabase database;
     SQLiteCursor cursor;
 
+
     /**
      *
      * Begin transaction is implemented in sql.cpp
