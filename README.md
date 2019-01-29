@@ -31,5 +31,6 @@ sqlite3_column_type()
   
 
 
-Reference:
+# Reference:
+
 http://www.yolinux.com/TUTORIALS/SQLite.html
