@@ -1,5 +1,5 @@
 # NativeDB
-Android project with sqlite3.c library with C++/Java implementation
+# Android project with sqlite3.c library with C++/Java implementation
 
 opendb - Opens specified database file. 
 
