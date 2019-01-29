@@ -34,6 +34,8 @@ public class SQLiteCursor {
         return preparedStatement.getStatementHandle();
     }
 
+    //gets the value from preparedstatement with the selected column index
+    //you can set column type to any primitive value (float, string, double, int, byte, boolean)
     native int columnIntValue(long statementHandle, int columnIndex);
     native String columnStringValue(long statementHandle, int columnIndex);
 

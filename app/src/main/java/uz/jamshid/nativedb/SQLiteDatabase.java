@@ -25,6 +25,8 @@ public class SQLiteDatabase {
         closedb(sqliteHandle);
     }
 
+    //opens database with the given database path and name
     native long opendb(String fileName) throws SQLiteException;
+    //close database
     native void closedb(long sqliteHandle) throws SQLiteException;
 }

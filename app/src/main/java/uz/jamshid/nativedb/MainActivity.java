@@ -1,5 +1,6 @@
 package uz.jamshid.nativedb;
 
+import android.database.Cursor;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
 import android.support.v7.app.AppCompatActivity;
@@ -7,11 +8,14 @@ import android.util.Log;
 import android.view.View;
 import android.widget.EditText;
 
+import uz.jamshid.nativedb.TestSQL.DBHelper;
+
 public class MainActivity extends AppCompatActivity {
 
     EditText et_text;
     SQLiteDatabase database;
     SQLiteCursor cursor;
+    DBHelper db;
 
     /**
      *
@@ -26,10 +30,12 @@ public class MainActivity extends AppCompatActivity {
 
         et_text = findViewById(R.id.et_text);
 
+        db = new DBHelper(this);
         String sql_create = "CREATE TABLE IF NOT EXISTS Users (Id INTEGER PRIMARY KEY, Name TEXT)";
 
         try {
             database = new SQLiteDatabase(getFilesDir().getPath() + "test.db");
+            database.execute("Drop table Users").step().dispose();
             database.execute(sql_create).step().dispose();
         }catch (Exception ignored){
 
@@ -48,8 +54,15 @@ public class MainActivity extends AppCompatActivity {
     }
 
     public void save(View view) throws SQLiteException {
-        String input = "INSERT INTO Users(Name) VALUES ('"+et_text.getText().toString()+"');";
-        database.execute(input).step().dispose();
+        String input;
+        long last = System.currentTimeMillis();
+
+        for (int i = 0; i<100; i++) {
+            input = "INSERT INTO Users(Name) VALUES ('"+i+"');";
+            database.execute(input).step().dispose();
+//            db.insertData(i+"");
+        }
+        Log.d("MYTAG", "Insert time: " + (System.currentTimeMillis() - last));
     }
 
     public void read(View view) throws SQLiteException {
@@ -60,9 +73,14 @@ public class MainActivity extends AppCompatActivity {
             sql = "SELECT * FROM Users WHERE Id = " + et_text.getText().toString();
 
         cursor = database.query(sql);
+
+        Cursor c = db.getData();
+
+        long last = System.currentTimeMillis();
         while (cursor.next()){
             Log.d("MYTAG", cursor.stringValue(1));
         }
+        Log.d("MYTAG", "Read time: " + (System.currentTimeMillis() - last));
     }
 
 

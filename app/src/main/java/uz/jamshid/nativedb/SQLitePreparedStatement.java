@@ -24,8 +24,13 @@ class SQLitePreparedStatement {
         finalize(sqliteStatementHandle);
     }
 
+    //prepares a SQL statement ready for execution.
     native long prepare(long sqliteHandle, String sql) throws SQLiteException;
+
+    //deletes a previously prepared SQL statement from memory.
     native void finalize(long statementHandle) throws SQLiteException;
+
+    //executes a SQL statement previously prepared by the prepare function.
     native int step(long statementHandle) throws SQLiteException;
 
 }
