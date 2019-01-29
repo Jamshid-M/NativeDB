@@ -27,7 +27,7 @@ sqlite3_finalize()
 
 columnIntValue, columnStringValue - Returns a data field from the results of a SQL retrieval operation where <type> is replaced by the data type of the data to be extracted (text, blob, bytes, int, int16 etc). 
 
-sqlite3_column_<type>()
+sqlite3_column_type()
   
 
 
